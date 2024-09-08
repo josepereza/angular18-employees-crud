@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <span>Employee Management</span>
+  <span class="spacer"></span>
+  <button mat-raised-button (click)="showForm.set(true)">Add Employee</button>
+</mat-toolbar>
+
+<div class="content">
+  @if (showForm()) {
+    <app-employee-form 
+      [employee]="selectedEmployee()"
+      (formSubmitted)="onFormSubmitted()" 
+      (cancelForm)="onCancelForm()">
+    </app-employee-form>
+  } @else {
+    <app-employee-list (editRequested)="onEditRequested($event)"></app-employee-list>
+  }
+</div>
